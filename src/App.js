@@ -12,7 +12,7 @@ function App() {
       <div className="invoice__headings">
         <BrowserRouter>
           <Header />
-          <Route path="/frontend-assignment" component={Home} />
+          <Route path="/invoice-generator" component={Home} />
           <Route path="/generate" component={InvoicePage} />
           <Route path="/invoices" component={Invoices} />
         </BrowserRouter>

@@ -33,7 +33,7 @@ export default function Header() {
                     </Typography>
                     <Button color="inherit"><Link to="/generate" className="generate" >Generate Invoice</Link></Button>
                     <Button color="inherit"><Link to="/invoices" className="invoices" >Invoices</Link></Button>
-                    <Button color="inherit"><Link to="/frontend-assignment" className="generate" ><HomeIcon /></Link></Button>
+                    <Button color="inherit"><Link to="/invoice-generator" className="generate" ><HomeIcon /></Link></Button>
                 </Toolbar>
             </AppBar>
         </div>
