@@ -1,4 +1,4 @@
-# TaxAdda Frontend Assignment
+# Invoice Generator
 
 <p>A small invoice generator created using React.</p>
 <p>Want to start using it ? Go <a href="https://aagam-jain-113.github.io/invoice-generator/">Live</a></p>
