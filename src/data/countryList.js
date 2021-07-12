@@ -1,4 +1,5 @@
 const countryList = [
+    { value: 'India', text: 'India' },
     { value: 'Bangladesh', text: 'Bangladesh' },
     { value: 'Belgium', text: 'Belgium' },
     { value: 'Burkina Faso', text: 'Burkina Faso' },
@@ -244,7 +245,6 @@ const countryList = [
     { value: 'Australia', text: 'Australia' },
     { value: 'Austria', text: 'Austria' },
     { value: 'Aruba', text: 'Aruba' },
-    { value: 'India', text: 'India' },
     { value: 'Aland Islands', text: 'Aland Islands' },
     { value: 'Azerbaijan', text: 'Azerbaijan' },
     { value: 'Ireland', text: 'Ireland' },

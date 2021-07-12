@@ -66,7 +66,6 @@ export default function SimplePopover(props) {
                                 <p>{props.details.companyAddress2}</p>
                                 <p>{props.details.companyCountry}</p>
                             </div>
-                            {/* <CloseIcon className="close" id={id} open={open} anchorEl={anchorEl} onClick={handleClose} /> */}
                         </div>
                         <div className="flex w-100">
                             <div className="flex client__details w-40">
