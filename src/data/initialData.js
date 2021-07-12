@@ -1,3 +1,12 @@
+import format from 'date-fns/format';
+
+const dateFormat = 'MMM dd, yyyy';
+const invoiceDate = new Date();
+const invoiceDueDate = new Date(invoiceDate.valueOf());
+if (invoiceDueDate === '') {
+    invoiceDueDate.setDate(invoiceDueDate.getDate() + 7);
+}
+
 export const initialProductLine = {
     description: '',
     quantity: '1',
@@ -20,9 +29,9 @@ export const initialInvoice = {
     invoiceTitleLabel: 'Invoice#',
     invoiceTitle: '',
     invoiceDateLabel: 'Invoice Date',
-    invoiceDate: '',
+    invoiceDate: format(invoiceDate, dateFormat),
     invoiceDueDateLabel: 'Due Date',
-    invoiceDueDate: '',
+    invoiceDueDate: format(invoiceDueDate, dateFormat),
     productLineDescription: 'Item Description',
     productLineQuantity: 'Qty',
     productLineQuantityRate: 'Rate',
