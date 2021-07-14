@@ -379,3 +379,103 @@ h1 {
   position: relative;
   height: 500px;
 }
+
+/* .login__form{
+  display: flex;
+  flex-direction: column;
+} */
+/* 
+.login__form input{
+  border: none; 
+  padding: 0.5rem 1rem;
+  border: 1px solid #555;
+  margin-bottom: 10px
+} */
+
+.login_btn{
+  padding: 0.5rem 1rem;
+  background: #262626;
+  color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login__image{
+  float: left;
+  width: 50%;
+  margin: 5% auto;
+  height: 300px;
+  background: url('./images/login.svg') no-repeat top center;
+  background-size: contain;
+  box-sizing: border-box;
+}
+
+.signup__image{
+  float: left;
+  width: 50%;
+  margin: 5% 0px;
+  height: 300px;
+  background: url('./images/signup.svg') no-repeat top center;
+  background-size: contain;
+  box-sizing: border-box;
+}
+
+.login__form{
+  float: right;
+  width: 50%;
+  height: 400px;
+  box-sizing: border-box;
+}
+
+.login__page{
+  width: 60%;
+  background: #fff;
+  margin: 0 auto;
+  height: 70vh;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5)
+}
+
+@media screen and (max-width:768px) {
+  .login__page{
+    width: 90%;
+    height: 600px;
+  }
+  .login__image,.signup__image{
+    width: 100%;
+    height: 30%;
+  }
+  .login__form{
+    width: 100%;
+  }
+}
+
+.formBox{
+  width: 100%;
+  padding: 50px;
+  height: 400px;
+}
+
+.formBox input{
+  margin-bottom: 20px;
+  border:none;
+  width: 100%;
+  border-bottom: 2px solid #000;
+  outline: none;
+  height: 40px;
+}
+
+.formBox input:focus{
+  border-bottom: 2px solid #ff0000;
+}
+
+.signup{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+}
