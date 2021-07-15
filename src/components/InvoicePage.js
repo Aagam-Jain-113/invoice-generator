@@ -14,6 +14,7 @@ import { Font } from '@react-pdf/renderer';
 import Download from './DownloadPDF';
 import format from 'date-fns/format';
 import { db } from '../firebase';
+import firebase from 'firebase';
 import status from '../data/paymentStatus';
 
 Font.register({
@@ -99,9 +100,10 @@ const InvoicePage = ({ data, pdfMode }) => {
         const saleTax = subTotal ? (subTotal * taxRate) / 100 : 0;
         setSaleTax(saleTax);
     }, [subTotal, invoice.taxLabel]);
+    const user = firebase.auth().currentUser;
     const handleSubmit = (e) => {
         e.preventDefault();
-        db.collection('invoices').add({
+        db.collection('invoices').doc(user.uid).collection('invoicedetails').doc().set({
             title: invoice.title,
             payment: invoice.payment,
             companyName: invoice.companyName,
@@ -155,7 +157,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                 <View className="flex" pdfMode={pdfMode}>
                     <View className="w-40" pdfMode={pdfMode}>
                         <EditableInput
-                            className="fs-20 right bold"
+                            className="fs-18 right bold"
                             placeholder="Tax Invoice "
                             value={invoice.title}
                             onChange={(value) => handleChange('title', value)}
@@ -306,7 +308,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                 </View>
 
                 <View className="flex mt-30 bg-dark" pdfMode={pdfMode}>
-                    <View className="w-48 p-4-8" pdfMode={pdfMode}>
+                    <View className="p-4 w-45" pdfMode={pdfMode}>
                         <EditableInput
                             className="white bold"
                             value={invoice.productLineDescription}
@@ -314,7 +316,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                             pdfMode={pdfMode}
                         />
                     </View>
-                    <View className="w-17 p-4-8" pdfMode={pdfMode}>
+                    <View className="p-4 w-17" pdfMode={pdfMode}>
                         <EditableInput
                             className="white bold right"
                             value={invoice.productLineQuantity}
@@ -322,7 +324,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                             pdfMode={pdfMode}
                         />
                     </View>
-                    <View className="w-17 p-4-8" pdfMode={pdfMode}>
+                    <View className="p-4 w-17" pdfMode={pdfMode}>
                         <EditableInput
                             className="white bold right"
                             value={invoice.productLineQuantityRate}
@@ -330,7 +332,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                             pdfMode={pdfMode}
                         />
                     </View>
-                    <View className="w-18 p-4-8" pdfMode={pdfMode}>
+                    <View className="p-4 w-18" pdfMode={pdfMode}>
                         <EditableInput
                             className="white bold right"
                             value={invoice.productLineQuantityAmount}
@@ -345,7 +347,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                         <Text key={i}></Text>
                     ) : (
                         <View key={i} className="flex row" pdfMode={pdfMode}>
-                            <View className="w-48 pb-10 p-4-8" pdfMode={pdfMode}>
+                            <View className="p-4 pb-10 w-45" pdfMode={pdfMode}>
                                 <EditableTextarea
                                     className="dark"
                                     rows={2}
@@ -355,7 +357,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                                     pdfMode={pdfMode}
                                 />
                             </View>
-                            <View className="pb-10 w-17 p-4-8" pdfMode={pdfMode}>
+                            <View className="p-4 pb-10 w-17" pdfMode={pdfMode}>
                                 <EditableInput
                                     className="dark right"
                                     value={productLine.quantity}
@@ -363,7 +365,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                                     pdfMode={pdfMode}
                                 />
                             </View>
-                            <View className="pb-10 w-17 p-4-8" pdfMode={pdfMode}>
+                            <View className="p-4 pb-10 w-17" pdfMode={pdfMode}>
                                 <EditableInput
                                     className="dark right"
                                     value={productLine.rate}
@@ -371,7 +373,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                                     pdfMode={pdfMode}
                                 />
                             </View>
-                            <View className="pb-10 w-18 p-4-8" pdfMode={pdfMode}>
+                            <View className="p-4 pb-10 w-18 fs-20" pdfMode={pdfMode}>
                                 <Text className="dark right" pdfMode={pdfMode}>
                                     {calculateAmount(productLine.quantity, productLine.rate)}
                                 </Text>
@@ -391,7 +393,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                 })}
 
                 <View className="flex" pdfMode={pdfMode}>
-                    <View className="mt-10 w-50 add__item" pdfMode={pdfMode}>
+                    <View className="w-40 mt-10 add__item" pdfMode={pdfMode}>
                         {!pdfMode && (
                             <button className="link" onClick={handleAdd}>
                                 <span className="mr-10 icon icon-add bg-green"></span>
@@ -399,7 +401,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                             </button>
                         )}
                     </View>
-                    <View className="mt-20 w-50" pdfMode={pdfMode}>
+                    <View className="mt-20 w-60" pdfMode={pdfMode}>
                         <View className="flex" pdfMode={pdfMode}>
                             <View className="p-5 w-50" pdfMode={pdfMode}>
                                 <EditableInput
@@ -439,7 +441,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                             </View>
                             <View className="flex p-5 w-50" pdfMode={pdfMode}>
                                 <EditableInput
-                                    className="dark bold right ml-30"
+                                    className="dark bold right"
                                     value={invoice.currency}
                                     onChange={(value) => handleChange('currency', value)}
                                     pdfMode={pdfMode}
@@ -500,7 +502,7 @@ const InvoicePage = ({ data, pdfMode }) => {
                         pdfMode={pdfMode}
                     />
                 </View>
-                <View className="w-20 right">
+                <View className="w-auto status right">
                     <EditableSelect
                         className="fs-20 right bold w-100"
                         options={status}

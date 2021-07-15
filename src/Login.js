@@ -32,10 +32,7 @@ const Login = ({ history }) => {
             });
     }
 
-
-
     const { currentUser } = useContext(AuthContext);
-
     if (currentUser) {
         return <Redirect to="/generate" />;
     }
@@ -55,13 +52,13 @@ const Login = ({ history }) => {
                         </label>
                         <button type="submit" className="login_btn">Login</button>
                     </form>
-                    <div className="signup">
-                        <span className="">Not having an account? </span>
-                        <Link to="/signup" className="mt-10 center" style={{ textDecoration: 'none', color: '#000' }} >Sign up</Link>
-                    </div>
                     <div className="signup" >
                         <span className="center"> OR </span>
                         <button className="mt-10 login_btn w-100" onClick={() => googleLogin(provider)}>Sign in with Google</button>
+                    </div>
+                    <div className="signup">
+                        <span className="">Not having an account? </span>
+                        <Link to="/signup" className="mt-10 center" style={{ textDecoration: 'none', color: '#000' }} >Sign up</Link>
                     </div>
                 </div>
             </div>
