@@ -5,7 +5,10 @@
 
 ## Tech Stack
 
-<img src="https://cdn.worldvectorlogo.com/logos/react-1.svg"  width="64" height="64" style="width:100%">
+<p float="left">
+     <img src="https://cdn.worldvectorlogo.com/logos/react-1.svg"  width="64" height="64" style="width:100%">
+     <img src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg"  width="64" height="64" style="width:100%">
+</p>
 
 ## Setup
 <p>To run this app, install it locally using npm:</p>
